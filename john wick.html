@@ -1,0 +1,103 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="img\favicon.png" type="image/x-icon">
+    <title>John Wick </title>
+</head>
+
+<body>
+    <header>
+        <video src="video/john wick.webm" autoplay muted></video>
+        <nav>
+            <div class="logo_ul">
+                <img src="img/logo.png" alt="">
+                <ul>
+                    <li>
+                        <a href="/" id="Home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" id="Series">Series</a>
+                    </li>
+                    <li>
+                        <a href="#" id="Movies">Movies</a>
+                    </li>
+                    <li>
+                        <a href="#" id="Kids">Kids</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="search_user">
+                <input type="text" placeholder="search" id="search_input">
+                <img src="img/user.jpg">
+                <div class="search">
+        
+                    <!-- <a href="" class="card">
+                        <img src="img/the boys.jpg">
+                        <div class="cont">
+                            <h3>The Boys</h3>
+                            <p>Action,2021, <span>IMDB</span><i class="fa-solid fa-star" style="color: #ffd500;"></i>9.6
+                            </p>
+                        </div>
+                    </a> -->
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <h1 id="title">Money Heist</h1>
+            <p>A criminal mastermind who goes by "The Professor" has a plan to pull off the biggest heist in recorded
+                history -- to print billions of euros in the Royal Mint of Spain. To help him carry out the ambitious
+                plan, he recruits eight people with certain abilities and who have nothing to lose.</p>
+            <div class="details">
+                <h6>A Netflix Original</h6>
+                <h5 id="gen">Thriller</h5>
+                <h4 id="date">2021</h4>
+                <h3 id="rate"><span>IMDB</span><i class="fa-solid fa-star" style="color: #ffd500;"></i> 9.6</h3>
+            </div>
+            <div class="btns">
+                <a href="#" download="John Wick 480p" id="low_q">480p</a>
+                <a href="#" download="John Wick 720p" id="low_q">720p</a>
+                <a href="#" download="John Wick 1080p" id="low_q">1080p</a>
+            </div>
+        </div>
+        <section>
+            <h4>Popular</h4>
+            <i class="fa-solid fa-chevron-left"></i>
+            <i class="fa-solid fa-chevron-right"></i>
+            <div class="cards">
+
+            </div>
+        </section>
+
+    </header>
+
+    <script src="https://kit.fontawesome.com/543f2cd1e0.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+    <script>
+       fetch(json_url).then((Response)=>Response.json()).
+       then(data=>{
+        let movie_array=data.filter(ele=>{
+            return ele.name==="John Wick"
+          })
+          console.log(movie_array);
+       
+    document.getElementById('title').innerText=movie_array[0].name;
+    document.getElementById('low_q').href=movie_array[0].low;
+    document.getElementById('medium_q').href=movie_array[0].medium;
+    document.getElementById('high_q').href=movie_array[0].high;
+    document.getElementById('genre').innerText=movie_array[0].genre;
+    document.getElementById('rate').innerHTML=`<span>IMDB</span><i class="fa-solid fa-star" style="color: #ffd500;"></i>${data[0].imdb}`;
+    document.getElementById('date').innerText=movie_array[0].date;
+    document.getElementsByTagName('video')[0].src=movie_array[0].trailer;
+    document.getElementsByTagName('video')[0].play();
+} ) 
+    </script>
+
+</body>
+
+</html>
